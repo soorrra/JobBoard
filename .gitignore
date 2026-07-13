@@ -11,3 +11,7 @@ obj/
 
 # Logs
 *.log
+
+# Secrets
+appsettings.Development.json
+
