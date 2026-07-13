@@ -3,7 +3,7 @@ using JobBoard.Domain.Enums;
 namespace JobBoard.Domain.Entities; 
 
 
-public class Application
+public class JobApplication
 {
     public Guid Id { get; set; }
     public Guid UserId { get; set; }

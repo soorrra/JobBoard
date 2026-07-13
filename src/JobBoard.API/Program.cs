@@ -1,7 +1,16 @@
+using JobBoard.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // controllers support
 builder.Services.AddControllers();
+
+// PostgreSQL + EF Core
+builder.Services.AddDbContext<JobBoardDbContext>(options =>
+    options.UseNpgsql(
+        builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // visable endpoint for swagger
 builder.Services.AddEndpointsApiExplorer();
