@@ -10,4 +10,8 @@ public class Vacancy
     public decimal SalaryTo { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
+
+    // navigation properties
+
+    public ICollection<JobApplication> Applications { get; set; } = new List<JobApplication>();
 }

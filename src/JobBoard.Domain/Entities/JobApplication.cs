@@ -9,6 +9,11 @@ public class JobApplication
     public Guid UserId { get; set; }
     public Guid VacancyId { get; set; }
     public ApplicationStatus Status { get; set; } = ApplicationStatus.Pending;
-    public DateTime CreateedAt { get; set; } = DateTime.UtcNow;
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
+
+    // navigation properties
+
+    public User? User { get; set; }
+    public Vacancy? Vacancy { get; set; }
 }

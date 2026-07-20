@@ -10,4 +10,9 @@ public class User
 	public string PasswordHash { get; set; } = string.Empty;
 	public UserRole Role { get; set; } = UserRole.Applicant;
 	public DateTime CreatedAt { get; set; } = DateTime.UtcNow; //UTC - free from time zonees
+
+
+    // navigation properties
+	
+	public ICollection<JobApplication> Applications { get; set; } = new List<JobApplication>();
 }
