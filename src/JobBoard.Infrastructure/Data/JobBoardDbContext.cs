@@ -14,6 +14,7 @@ public class JobBoardDbContext : DbContext
     public DbSet<Vacancy> Vacancies { get; set; }
     public DbSet<JobApplication> Applications { get; set; }
 
+    // Fluent API (method chaining)
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
