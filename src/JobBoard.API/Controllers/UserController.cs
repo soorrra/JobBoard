@@ -44,47 +44,6 @@ public class UserController : ControllerBase
         return Ok(user);
     }
 
-    //// Update vacancy
-    //// updetedVacancy - data from Swagger UI
-    //// vacancy - data from database 
-    //[HttpPut("{id}")]
-    //public async Task<ActionResult<Vacancy>> Update(Guid id, Vacancy updatedVacancy)
-    //{
-    //    var vacancy = await _context.Vacancies.FindAsync(id);
-
-    //    if (vacancy is null)
-    //    {
-    //        return NotFound(); // 404 Not Found
-    //    }
-
-    //    vacancy.Title = updatedVacancy.Title;
-    //    vacancy.Description = updatedVacancy.Description;
-    //    vacancy.Company = updatedVacancy.Company;
-    //    vacancy.SalaryFrom = updatedVacancy.SalaryFrom;
-    //    vacancy.SalaryTo = updatedVacancy.SalaryTo;
-
-    //    await _context.SaveChangesAsync(); // send SQL to PostgreSQL
-
-    //    return Ok(vacancy);
-    //}
-
-    //// Delete vacancy
-    //[HttpDelete("{id}")]
-    //public async Task<ActionResult<Vacancy>> Delete(Guid id)
-    //{
-    //    var vacancy = await _context.Vacancies.FindAsync(id);
-
-    //    if (vacancy is null)
-    //    {
-    //        return NotFound(); // 404 Not Found
-    //    }
-
-    //    _context.Vacancies.Remove(vacancy); // remove from EF Core
-    //    await _context.SaveChangesAsync(); // send SQL to PostgreSQL
-
-    //    return NoContent(); // 204 No Content
-    //}
-
 }
 
 // work with users using HTTP API

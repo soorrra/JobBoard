@@ -75,4 +75,4 @@ public class ApplicationController : ControllerBase
 
 }
 
-// work with vacansies using HTTP API
+// work with applications using HTTP API

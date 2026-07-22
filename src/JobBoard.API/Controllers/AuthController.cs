@@ -26,7 +26,7 @@ public class AuthController : ControllerBase
 
         if (existingUser is not null)
         {
-            return BadRequest("User with this email already exists.");
+            return BadRequest("User with this email already exists."); // 400
         }
 
         var passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password); // user password to hash
@@ -46,5 +46,29 @@ public class AuthController : ControllerBase
         await _context.SaveChangesAsync();
 
         return Ok(user);
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login(LoginRequest request)
+    {
+        var user = await _context.Users
+            .FirstOrDefaultAsync(u => u.Email == request.Email); // get user or null
+        
+        if (user is null)
+        {
+            return Unauthorized("Invalid email or password."); // 401 Unauthorized
+        }
+
+        var isPasswordValid = BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash);
+
+        if (!isPasswordValid)
+        {
+            return Unauthorized("Invalid email or password."); 
+        }
+
+        return Ok(new
+        {
+            Message = "Login successful."
+        });
     }
 }
