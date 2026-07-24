@@ -2,6 +2,7 @@ using JobBoard.Domain.Entities;
 using JobBoard.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JobBoard.API.Controllers;
 
@@ -18,6 +19,7 @@ public class VacancyController : ControllerBase
     }
 
     // Create new vacancy
+    [Authorize] // only authorized users can create vacancies
     [HttpPost]
     public async Task<ActionResult<Vacancy>> Create(Vacancy vacancy)
     {

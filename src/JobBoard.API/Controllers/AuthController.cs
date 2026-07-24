@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JobBoard.Domain.Entities;
 using JobBoard.Domain.Enums;
+using JobBoard.API.Services;
 
 namespace JobBoard.API.Controllers;
 
@@ -12,10 +13,12 @@ namespace JobBoard.API.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly JobBoardDbContext _context;
+    private readonly JwtService _jwtService;
 
-    public AuthController(JobBoardDbContext context)
+    public AuthController(JobBoardDbContext context, JwtService jwtService)
     {
         _context = context;
+        _jwtService = jwtService;
     }
 
     [HttpPost("register")]
@@ -66,9 +69,11 @@ public class AuthController : ControllerBase
             return Unauthorized("Invalid email or password."); 
         }
 
+        var token = _jwtService.GenerateToken(user);
+
         return Ok(new
         {
-            Message = "Login successful."
+            Token = token
         });
     }
 }
